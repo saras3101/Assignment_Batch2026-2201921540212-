@@ -1,0 +1,37 @@
+//1752. Check if Array Is Sorted and Rotated
+
+
+# Intuition
+<!-- To check if an array can become sorted after rotations, we just need to count the number of positions where adjacent elements are out of order (including the wrap-around position). If this count is more than 1, the array cannot be sorted through rotations.-->
+
+# Approach
+<!-- Count positions where current element is greater than next element (including wrap-around using modulo)
+If count > 1, return false (array cannot be sorted by rotation)
+Otherwise, return true (array can be sorted by rotation) -->
+
+# Complexity
+- Time complexity:
+<!--  O(n)  -->
+
+- Space complexity:
+<!-- O(1)  -->
+
+# Code
+```java []
+class Solution {
+    public boolean check(int[] nums) {
+        int k = 0;
+        int n = nums.length;
+        for (int i = 0; i < nums.length; i++){
+            if(nums[i] > nums[(i+1)%n]){
+               k++;
+            }
+        }
+        if(k > 1){
+            return false;
+        }
+        return true;
+        
+    }
+}
+```
